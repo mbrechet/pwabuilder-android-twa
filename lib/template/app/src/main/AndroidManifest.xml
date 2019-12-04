@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
  xmlns:tools="http://schemas.android.com/tools"
-    package="microsoft.com.pwa">
+    package="com.adventiel.todopwa">
 
-    <supports-screens android:anyDensity="true" android:largeScreens="true" android:normalScreens="true" android:resizeable="true" android:smallScreens="true" android:xlargeScreens="true" />
+
+
+    <meta-data
+            android:name="use_browser_on_chromeOS"
+            android:resource="@bool/useBrowserOnChromeOS" />
+
+    
     <uses-permission android:name="android.permission.INTERNET" />
     <application
         android:label="@string/app_name"
@@ -17,13 +23,7 @@
             android:name="asset_statements"
             android:resource="@string/asset_statements" />
 
-        <activity android:name=".MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-
+        
           <activity
             android:name="android.support.customtabs.trusted.LauncherActivity">
 
@@ -53,6 +53,18 @@
                     android:host="@string/app_host"/>
             </intent-filter>
         </activity>
+
+
+        <service
+             android:name="android.support.customtabs.trusted.TrustedWebActivityService"
+             android:enabled="@bool/enableNotification"
+             android:exported="@bool/enableNotification">
+
+             <intent-filter>
+                 <action android:name="android.support.customtabs.trusted.TRUSTED_WEB_ACTIVITY_SERVICE"/>
+                 <category android:name="android.intent.category.DEFAULT"/>
+             </intent-filter>
+         </service>
 
     </application>
 

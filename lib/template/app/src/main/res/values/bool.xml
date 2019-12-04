@@ -1,0 +1,4 @@
+<resources>
+    <bool name="enableNotification">true</bool>
+    <bool name="useBrowserOnChromeOS">true</bool>
+</resources>
